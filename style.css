@@ -1,0 +1,331 @@
+/* style.css - Custom styles for Family Debt Manager */
+
+/* ===== PRINT STYLES ===== */
+.print-only {
+    display: none;
+}
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    .print-only {
+        display: block !important;
+    }
+    body {
+        background: white !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .shadow {
+        box-shadow: none !important;
+    }
+    .rounded-lg {
+        border-radius: 0 !important;
+    }
+    table {
+        font-size: 12px !important;
+    }
+    th, td {
+        padding: 6px 8px !important;
+    }
+}
+
+/* ===== MOBILE FRIENDLY ===== */
+@media (max-width: 640px) {
+    .mobile-stack {
+        flex-direction: column !important;
+    }
+    .mobile-full {
+        width: 100% !important;
+    }
+    .mobile-text-sm {
+        font-size: 0.875rem !important;
+    }
+    .mobile-p-2 {
+        padding: 0.5rem !important;
+    }
+    .mobile-grid-1 {
+        grid-template-columns: 1fr !important;
+    }
+    .mobile-hide {
+        display: none !important;
+    }
+    table {
+        font-size: 0.75rem;
+    }
+    th, td {
+        padding: 0.5rem 0.25rem !important;
+    }
+    .container {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+}
+
+/* ===== DASHBOARD CARDS ===== */
+.dashboard-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== DEBT PROGRESS BAR ===== */
+.progress-bar {
+    transition: width 0.8s ease-in-out;
+}
+
+.progress-bar.animate {
+    animation: progressAnimation 1s ease-in-out;
+}
+
+@keyframes progressAnimation {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: var(--progress-width);
+    }
+}
+
+/* ===== STATUS BADGES ===== */
+.badge-high-interest {
+    background-color: #fee2e2;
+    color: #dc2626;
+    font-weight: bold;
+}
+
+.badge-low-interest {
+    background-color: #dcfce7;
+    color: #16a34a;
+}
+
+.badge-due-soon {
+    background-color: #fef3c7;
+    color: #d97706;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* ===== TABLE ROW HOVER ===== */
+.debt-row {
+    transition: background-color 0.2s ease;
+}
+
+.debt-row:hover {
+    background-color: #f8fafc;
+}
+
+.debt-row.paid-off {
+    background-color: #f0fdf4;
+    opacity: 0.7;
+}
+
+/* ===== PAYMENT BUTTONS ===== */
+.btn-pay {
+    background-color: #22c55e;
+    color: white;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-pay:hover {
+    background-color: #16a34a;
+    transform: scale(1.02);
+}
+
+.btn-pay:active {
+    transform: scale(0.98);
+}
+
+.btn-delete {
+    background-color: #ef4444;
+    color: white;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-delete:hover {
+    background-color: #dc2626;
+    transform: scale(1.02);
+}
+
+.btn-delete:active {
+    transform: scale(0.98);
+}
+
+/* ===== FORM STYLES ===== */
+.form-input {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-input.error {
+    border-color: #ef4444;
+    background-color: #fef2f2;
+}
+
+.form-input.success {
+    border-color: #22c55e;
+    background-color: #f0fdf4;
+}
+
+/* ===== FLOATING ACTION BUTTON (Mobile) ===== */
+.fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #2563eb;
+    color: white;
+    font-size: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 50;
+}
+
+.fab:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.fab:active {
+    transform: scale(0.95);
+}
+
+@media (min-width: 641px) {
+    .fab {
+        display: none;
+    }
+}
+
+/* ===== TOAST NOTIFICATIONS ===== */
+.toast {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    color: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    animation: slideIn 0.3s ease, fadeOut 0.3s ease 3s forwards;
+    max-width: 90vw;
+}
+
+.toast-success {
+    background-color: #22c55e;
+}
+
+.toast-error {
+    background-color: #ef4444;
+}
+
+.toast-info {
+    background-color: #3b82f6;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+    /* This is a light theme, but we keep it consistent */
+    /* Users can toggle dark mode if needed */
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* ===== LOADING SPINNER ===== */
+.spinner {
+    border: 4px solid #f3f4f6;
+    border-top: 4px solid #2563eb;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.empty-state .emoji {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+}
